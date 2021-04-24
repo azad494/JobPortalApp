@@ -1,0 +1,117 @@
+﻿@using JobPortalApp.Models
+
+
+@{
+    List<Job> jobs = ViewBag.jobs;
+    ViewBag.Title = "ViewJob";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+@*<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>JobType</th>
+                <th>Description</th>
+                <th>Apply Job</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (Job job in jobs)
+            {
+                <tr>
+                    <td>@job.Title</td>
+                    <td>@job.Company</td>
+
+                    <td>@job.JobType</td>
+                    <td>@job.Description</td>
+                    <td>@Html.ActionLink("Apply", "ApplyJob", "Job", new { id = job.Id }, new { @class = "btn btn-success" })</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>*@
+
+
+
+
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="mb-5 h3">Jobs</h2>
+
+
+                <div class="rounded border jobs-wrap">
+
+                    @foreach (Job job in jobs)
+                    {
+
+                        <a href="/Job/ApplyJob?id=@job.Id" class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
+                            @*<div class="company-logo blank-logo text-center text-md-left pl-3">
+                                <img src="~/images/@job.Company$.png" alt="Image" class="img-fluid mx-auto">
+                            </div>*@
+                            <div class="job-details h-100">
+                                <div class="p-3 align-self-center">
+                                    <h3>@job.Title needed</h3>
+                                    <div class="d-block d-lg-flex">
+                                        <div class="mr-3">
+                                            <span class="icon-suitcase mr-1"></span> @job.Company
+                                        </div>
+
+                                        <div class="mr-3">
+                                            <span class="icon-room mr-1"></span> @job.Location
+                                        </div>
+                                        <div >
+                                            <span class="icon-money mr-1"></span> @job.Salary
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="job-category align-self-center">
+                                <div class="p-3">
+                                    <span class="text-info p-2 rounded border border-info">@job.JobType</span>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+                </div>    
+            <div class="col-md-4 block-16" data-aos="fade-up" data-aos-delay="200">
+                <div class="d-flex mb-0">
+                    <h2 class="mb-5 h3 mb-0">Featured Jobs</h2>
+                    @*<div class="ml-auto mt-1"><a href="#" class="owl-custom-prev">Prev</a> / <a href="#" class="owl-custom-next">Next</a></div>*@
+                </div>
+                <div class="nonloop-block-16 owl-carousel">
+                    <div class="border rounded p-4 bg-white">
+                        <h2 class="h5">Programmer</h2>
+                        <p><span class="border border-warning rounded p-1 px-2 text-warning">Nerd Tech.</span></p>
+                        <p>
+                            <span class="d-block"><span class="icon-suitcase"></span>Java/Python</span>
+                            <span class="d-block"><span class="icon-room"></span> Dhaka</span>
+                            
+                        </p>
+                        <p class="mb-0">We are hiring some passionate programmer who can work with us with ease. Problem solving skill have to be good.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+
+<script src="~/Scripts/DataTables/media/js/dataTables.bootstrap.min.js"></script>

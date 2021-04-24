@@ -1,0 +1,160 @@
+﻿@using JobPortalApp.Manager
+@using JobPortalApp.Models
+@model JobPortalApp.Models.Job
+@{
+    UserManager userManager = new UserManager();
+    List<Gender> genders = userManager.Genders();
+}
+
+<div class="unit-5 overlay" style="background-color: #2bef8d; ">
+    <div class="container text-center">
+        <h2 class="mb-0">Post a job</h2>
+        <p class="mb-0 unit-6"><a href="/Home/Index">Home</a> <span class="sep">></span> <span>Post a Job</span></p>
+    </div>
+</div>
+
+
+
+@using (Html.BeginForm("Post", "Job", FormMethod.Post, new { id = "JobPostForm", @class = "p-5 bg-white form-horizontal" }))
+                        {
+
+                                if (ViewBag.message != null)
+                                {
+                                    <label style="color: red">@ViewBag.message</label>
+                                }
+                            <div class="row form-group">
+                                
+                                <div class="col-md-12 mb-3 mb-md-0">
+
+                                    @Html.LabelFor(x => x.Title, new { @class = "font-weight-bold" })
+                                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", placeholder = "eg. Programmer" })
+                                    @Html.ValidationMessageFor(x => x.Title)
+
+                                </div>
+                            </div>
+                            
+                            <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.Location, new { @class = "font-weight-bold" })
+                                    @Html.TextBoxFor(x => x.Location, new { @class = "form-control", placeholder = "eg. Dhaka" })
+                                    @Html.ValidationMessageFor(x => x.Location)
+                                </div>
+                            </div>
+
+
+                            <div class="row form-group">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.JobType, new { @class = "font-weight-bold" })
+                                </div>
+                                <div class="col-md-12 mb-3 mb-md-0">
+
+                                    @Html.RadioButton("JobType", "Full Time") <text> Full Time</text>
+                                    @*<input type="radio" id="option-job-type-1" name="job-type"> Full Time*@
+
+                                </div>
+                                <div class="col-md-12 mb-3 mb-md-0">
+
+                                    @Html.RadioButton("JobType", "Part Time") <text> Part Time</text>
+                                    @*<input type="radio" id="option-job-type-2" name="job-type"> Part Time*@
+
+                                </div>
+                                <div class="col-md-12 mb-3 mb-md-0">
+
+                                    @Html.RadioButton("JobType", "Internship") <text> Internship </text>
+                                    @*<input type="radio" id="option-job-type-2" name="job-type"> Part Time*@
+
+                                </div>
+
+                            </div>
+                            <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.Description, new {@class = "font-weight-bold"})
+                                    @Html.TextAreaFor(x => x.Description, new {@class = "form-control"})
+
+                                </div>
+                            </div>
+    
+
+                            <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.NumberOfPost, new { @class = "font-weight-bold" })
+                                    @Html.TextBoxFor(x => x.NumberOfPost, new { @class = "form-control", placeholder = "eg. 10" })
+                                    @Html.ValidationMessageFor(x => x.NumberOfPost)
+                                </div>
+                            </div>
+                            <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.Qualification, new { @class = "font-weight-bold" })
+                                    @Html.TextBoxFor(x => x.Qualification, new { @class = "form-control", placeholder = "eg. Msc" })
+                                    @Html.ValidationMessageFor(x => x.Qualification)
+                                </div>
+                            </div>
+                            <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.Experience, new { @class = "font-weight-bold" })
+                                    @Html.TextBoxFor(x => x.Experience, new { @class = "form-control", placeholder = "eg. 2 years" })
+                                    @Html.ValidationMessageFor(x => x.Experience)
+                                </div>
+                            </div>
+
+                            <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.Responsibilities, new {@class = "font-weight-bold"})
+                                    @Html.TextBoxFor(x => x.Responsibilities, new {@class = "form-control", placeholder = "eg. Job responsibilities"})
+                                    @Html.ValidationMessageFor(x => x.Responsibilities)
+                                </div>
+                            </div>
+                            <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.AdditionalRequirements, new {@class = "font-weight-bold"})
+                                    @Html.TextBoxFor(x => x.AdditionalRequirements, new {@class = "form-control", placeholder = "eg. Additional requirements"})
+                                    @Html.ValidationMessageFor(x => x.AdditionalRequirements)
+                                </div>
+                            </div>
+                            <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.Salary, new {@class = "font-weight-bold"})
+                                    @Html.TextBoxFor(x => x.Salary, new {@class = "form-control", placeholder = "eg. 2000$."})
+                                    @Html.ValidationMessageFor(x => x.Salary)
+                                </div>
+                            </div>
+    <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.Gender, new { @class = "font-weight-bold" })
+                                    @Html.DropDownListFor(x => x.Gender, new SelectList(genders, "Id", "Name"), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.Gender)
+                                </div>
+                            </div>
+    
+
+    
+    
+                            <div class="row form-group mb-5">
+                                <div class="col-md-12 mb-3 mb-md-0">
+                                    @Html.LabelFor(x => x.LastDateToApply, new { @class = "font-weight-bold" })
+                                    @Html.TextBoxFor(x => x.LastDateToApply, new { @class = "form-control", placeholder = "mm/dd/yyyy" })
+                                    @Html.ValidationMessageFor(x => x.LastDateToApply)
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <input type="submit" value="Post a Job" class="btn btn-primary  py-2 px-5">
+                                </div>
+                            </div>
+                        }
+
+                   <script src="~/js/jquery-3.3.1.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $('#LastDateToApply').datepicker({
+        todayBtn: "linked",
+        autoclose: true,
+        todayHighlight: true,
+
+    })
+</script>

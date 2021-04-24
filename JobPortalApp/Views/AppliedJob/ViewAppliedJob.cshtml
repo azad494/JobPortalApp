@@ -1,0 +1,44 @@
+﻿@using JobPortalApp.Models
+
+@{
+    List<AppliedJob> jobs = ViewBag.jobs;
+    ViewBag.Title = "ViewAppliedJob";
+}
+
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet"/>*@
+    
+
+    <div class="container">
+        <h2> Applied Job  </h2>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Applicant's Name</th>
+                    <th>Birthdate</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>CV</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (AppliedJob appliedJob in jobs)
+{
+    <tr>
+        <td>@appliedJob.JobTitle</td>
+        <td>@appliedJob.ApplicantName</td>
+        <td>@appliedJob.ApplicantBd</td>
+        <td>@appliedJob.ApplicantAddress</td>
+        <td>@appliedJob.ApplicantEmail</td>
+        <td><a href="/AppliedJob/Download?path=@appliedJob.ApplicantCv" class="btn btn-dark">Download</a></td>
+    </tr>
+}
+            </tbody>
+        </table>
+    </div>
+    @*<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>*@
+
+
+

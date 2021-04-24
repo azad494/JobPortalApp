@@ -1,0 +1,98 @@
+﻿@using JobPortalApp.Models
+@model JobPortalApp.Models.AppliedJob
+@{
+    ViewBag.Title = "Apply Job";
+}
+
+
+<h2>ApplyJob</h2>
+
+@using (Html.BeginForm("AppliedJob", "AppliedJob", FormMethod.Post, new { enctype="multipart/form-data", @class = "p-5 bg-white form-horizontal" }))
+{
+
+
+   
+        if (ViewBag.Message != null)
+        {
+            <label style="color: red">@ViewBag.Message</label>
+        }
+
+        
+
+            <div class="row form-group mb-5">
+            <div class="col-md-12 mb-3 mb-md-0">
+
+                @Html.LabelFor(x => x.Company, new {@class = "font-weight-bold"})
+                @Html.TextBoxFor(x => x.Company, new {@class = "form-control"})
+                @Html.ValidationMessageFor(x => x.Company)
+
+            </div>
+
+                </div>
+            <div class="row form-group mb-5">
+                <div class="col-md-12 mb-3 mb-md-0">
+                    @Html.LabelFor(x => x.JobTitle, new {@class = "font-weight-bold"})
+                    @Html.TextBoxFor(x => x.JobTitle, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(x => x.JobTitle)
+                </div>
+            </div>
+        
+        <div class="row form-group mb-5">
+            <div class="col-md-12 mb-3 mb-md-0">
+                @Html.LabelFor(x => x.ApplicantName, new { @class = "font-weight-bold" })
+                @Html.TextBoxFor(x => x.ApplicantName, new { @class = "form-control"})
+                @Html.ValidationMessageFor(x => x.ApplicantName)
+            </div>
+        </div>
+
+
+
+        <div class="row form-group mb-5">
+            <div class="col-md-12 mb-3 mb-md-0">
+                @Html.LabelFor(x => x.ApplicantBd, new { @class = "font-weight-bold" })
+                @Html.TextBoxFor(x => x.ApplicantBd, new { @class = "form-control" })
+
+            </div>
+        </div>
+
+        <div class="row form-group mb-5">
+            <div class="col-md-12 mb-3 mb-md-0">
+                @Html.LabelFor(x => x.ApplicantAddress, new { @class = "font-weight-bold" })
+                @Html.TextBoxFor(x => x.ApplicantAddress, new { @class = "form-control"})
+                @Html.ValidationMessageFor(x => x.ApplicantAddress)
+            </div>
+        </div>
+        <div class="row form-group mb-5">
+            <div class="col-md-12 mb-3 mb-md-0">
+                @Html.LabelFor(x => x.ApplicantEmail, new { @class = "font-weight-bold" })
+                @Html.TextBoxFor(x => x.ApplicantEmail, new { @class = "form-control"})
+                @Html.ValidationMessageFor(x => x.ApplicantEmail)
+            </div>
+        </div>
+        <div class="row form-group mb-5">
+            <div class="col-md-12 mb-3 mb-md-0">
+                <label class="font-weight-bold">Drop your CV here</label><br />
+                <input class="btn btn-defaul" id="file" name="file" type="file" />
+            </div>
+        </div>
+
+
+
+        <div class="row form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Apply" class="btn btn-primary  py-2 px-5">
+            </div>
+        </div>
+    
+}
+<script src="~/js/jquery-3.3.1.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $('#ApplicantBd').datepicker({
+        todayBtn: "linked",
+        autoclose: true,
+        todayHighlight: true,
+
+    })
+</script>
